@@ -1,0 +1,23 @@
+﻿id,pregunta,respuesta_esperada,documento_fuente,categoria,dificultad
+P01,Cuanto demora un envio a la Region Metropolitana?,Entre 2 y 4 dias habiles (zona Centro).,Politica de Envios y Entregas,en_corpus,facil
+P02,Cuanto tarda un envio a Magallanes?,"Entre 6 y 10 dias habiles, por ser zona extrema.",Politica de Envios y Entregas,en_corpus,facil
+P03,Cuanto cuesta enviar un paquete de menos de 1 kg a la zona Centro?,$2.990.,Politica de Envios y Entregas,en_corpus,facil
+P04,Desde que monto el envio es gratis?,Desde $40.000 en compras en tiendas asociadas.,Politica de Envios y Entregas / FAQ,en_corpus,facil
+P05,Cuantos intentos de entrega hacen antes de devolver el paquete?,Hasta 3 intentos en dias habiles distintos; luego queda 5 dias habiles en sucursal para retiro.,Politica de Envios y Entregas / FAQ,en_corpus,media
+P06,Hacen envios internacionales a Argentina?,No. RutaSur solo opera en Chile continental; no realiza envios internacionales.,Politica de Envios y Entregas,en_corpus_negativa,media
+P07,Que formato tiene el numero de seguimiento?,RS seguido de 10 digitos (ejemplo: RS0043921785).,Procedimiento de Rastreo / FAQ,en_corpus,facil
+P08,Cada cuanto se actualiza el rastreo?,Cada 4 horas.,Procedimiento de Rastreo / FAQ,en_corpus,facil
+P09,"Mi paquete no se mueve hace 3 dias, que hago?",Contactar a soporte@rutasur.cl con el numero de seguimiento si no hay movimiento por mas de 3 dias habiles.,Procedimiento de Rastreo / FAQ,en_corpus,media
+P10,Cuando se considera extraviado un paquete y que pasa?,Tras 15 dias habiles sin movimiento; se gestiona como extravio y corresponde reembolso del valor declarado hasta el limite del seguro.,Procedimiento de Rastreo + Politica de Reembolsos,cross_doc,dificil
+P11,Hasta cuanto cubre el seguro incluido en el envio?,El seguro basico sin costo cubre hasta $50.000 del valor declarado.,Politica de Reembolsos y Siniestros / FAQ,en_corpus,facil
+P12,Cuanto cuesta el seguro adicional?,"1,5% del valor declarado del paquete.",Politica de Reembolsos y Siniestros,en_corpus,media
+P13,"Mi paquete llego roto, en cuanto tiempo puedo reclamar y que necesito?","Dentro de 5 dias habiles desde la entrega, adjuntando fotografias del embalaje y del contenido danado.",Politica de Reembolsos y Siniestros / FAQ,en_corpus,media
+P14,Cuanto tiempo tengo para devolver un producto?,"10 dias corridos desde la recepcion, si la tienda asociada ofrece devolucion.",Politica de Reembolsos y Siniestros / FAQ,en_corpus,media
+P15,A que correo envio un reclamo formal?,"A reclamos@rutasur.cl, o mediante el formulario web en la seccion Reclamos.",Proceso de Reclamos,en_corpus,facil
+P16,En cuanto tiempo responden un reclamo?,"Acuse de recibo en 24 horas habiles, primera respuesta en 5 dias habiles y resolucion final en hasta 15 dias habiles.",Proceso de Reclamos,en_corpus,media
+P17,Que formato tiene el numero de caso de un reclamo?,REC seguido de 8 digitos (ejemplo: REC00512347).,Proceso de Reclamos,en_corpus,facil
+P18,Atienden los domingos?,No. La atencion es lunes a viernes de 9:00 a 19:00 y sabado de 9:00 a 14:00; no operan domingos ni festivos.,Politica de Envios / Proceso de Reclamos,en_corpus_negativa,media
+P19,Puedo pagar el envio en cuotas con tarjeta de credito?,No hay informacion en los documentos. El sistema debe indicar que no dispone de ese dato.,NINGUNO,fuera_de_corpus,honestidad
+P20,Tienen una sucursal en Concepcion y cual es su direccion?,No hay informacion en los documentos. El sistema debe indicar que no dispone de ese dato.,NINGUNO,fuera_de_corpus,honestidad
+P21,Puedo enviar animales vivos o mascotas?,No hay informacion en los documentos. El sistema debe indicar que no dispone de ese dato.,NINGUNO,fuera_de_corpus,honestidad
+P22,Puedo cambiar la direccion de entrega despues de despachado el paquete?,No hay informacion en los documentos. El sistema debe indicar que no dispone de ese dato.,NINGUNO,fuera_de_corpus,honestidad

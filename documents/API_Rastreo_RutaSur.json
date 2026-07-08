@@ -1,0 +1,114 @@
+{
+  "api": "RutaSur Tracking API",
+  "version": "2.1.0",
+  "base_url": "https://api.rutasur.cl/v2",
+  "description": "API interna de rastreo de envíos RutaSur Logística. Permite consultar el estado de un envío, el historial de eventos y los datos del destinatario.",
+  "autenticacion": {
+    "tipo": "Bearer Token",
+    "header": "Authorization: Bearer <token>",
+    "nota": "Los tokens se generan en el portal de administración. Vigencia: 24 horas."
+  },
+  "endpoints": [
+    {
+      "nombre": "Consultar estado de envío",
+      "metodo": "GET",
+      "ruta": "/envios/{numero_seguimiento}",
+      "descripcion": "Retorna el estado actual y los datos principales de un envío.",
+      "parametros_ruta": [
+        {
+          "nombre": "numero_seguimiento",
+          "tipo": "string",
+          "formato": "RS seguido de 10 dígitos (ej: RS0043921785)",
+          "requerido": true
+        }
+      ],
+      "respuesta_exitosa": {
+        "codigo": 200,
+        "ejemplo": {
+          "numero_seguimiento": "RS0043921785",
+          "estado": "En reparto",
+          "estado_codigo": "EN_REPARTO",
+          "fecha_admision": "2026-01-15T08:32:00-03:00",
+          "ultima_actualizacion": "2026-01-17T09:15:00-03:00",
+          "zona": "Centro",
+          "plazo_estimado_dias_habiles": "2 a 4",
+          "intentos_entrega": 1,
+          "destinatario": {
+            "nombre": "María González",
+            "comuna": "Providencia",
+            "region": "Región Metropolitana"
+          },
+          "remitente": {
+            "tienda_asociada": "TiendaOnline S.A.",
+            "codigo_tienda": "TO-0421"
+          }
+        }
+      },
+      "errores": [
+        {"codigo": 404, "mensaje": "Número de seguimiento no encontrado."},
+        {"codigo": 401, "mensaje": "Token inválido o expirado."}
+      ]
+    },
+    {
+      "nombre": "Historial de eventos",
+      "metodo": "GET",
+      "ruta": "/envios/{numero_seguimiento}/eventos",
+      "descripcion": "Retorna el historial completo de eventos del envío en orden cronológico.",
+      "respuesta_exitosa": {
+        "codigo": 200,
+        "ejemplo": {
+          "numero_seguimiento": "RS0043921785",
+          "eventos": [
+            {
+              "fecha": "2026-01-15T08:32:00-03:00",
+              "estado": "Admitido",
+              "estado_codigo": "ADMITIDO",
+              "ubicacion": "Centro de distribución Santiago Sur",
+              "detalle": "Paquete ingresado a la red RutaSur."
+            },
+            {
+              "fecha": "2026-01-15T18:45:00-03:00",
+              "estado": "En tránsito",
+              "estado_codigo": "EN_TRANSITO",
+              "ubicacion": "Centro de distribución Santiago Norte",
+              "detalle": "Paquete trasladado entre centros de distribución."
+            },
+            {
+              "fecha": "2026-01-17T09:15:00-03:00",
+              "estado": "En reparto",
+              "estado_codigo": "EN_REPARTO",
+              "ubicacion": "Unidad de reparto Providencia",
+              "detalle": "Paquete en camino al destinatario. Entrega estimada hoy."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "nombre": "Estados válidos del sistema",
+      "metodo": "GET",
+      "ruta": "/estados",
+      "descripcion": "Retorna el catálogo de estados válidos del sistema.",
+      "respuesta_exitosa": {
+        "codigo": 200,
+        "ejemplo": {
+          "estados": [
+            {"codigo": "ADMITIDO", "descripcion": "El paquete ingresó a la red y comienza el conteo del plazo."},
+            {"codigo": "EN_TRANSITO", "descripcion": "El paquete se mueve entre centros de distribución."},
+            {"codigo": "EN_REPARTO", "descripcion": "El paquete salió a entrega y llegará durante el día."},
+            {"codigo": "ENTREGADO", "descripcion": "El paquete fue entregado al destinatario."},
+            {"codigo": "INTENTO_FALLIDO", "descripcion": "Se intentó entregar sin éxito; se reintentará el próximo día hábil."},
+            {"codigo": "EN_SUCURSAL", "descripcion": "Disponible para retiro tras 3 intentos fallidos. Plazo: 5 días hábiles."},
+            {"codigo": "DEVUELTO", "descripcion": "El paquete fue devuelto al remitente."}
+          ]
+        }
+      }
+    }
+  ],
+  "limites_de_uso": {
+    "peticiones_por_minuto": 60,
+    "peticiones_por_dia": 10000,
+    "nota": "Para integraciones de alto volumen, contactar a integraciones@rutasur.cl"
+  },
+  "contacto_soporte_api": "integraciones@rutasur.cl"
+}
