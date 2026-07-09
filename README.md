@@ -10,7 +10,7 @@ Agente de inteligencia artificial corporativo para **RutaSur Logística**, una e
 
 El agente está desplegado y en ejecución sobre una instancia de OCI Compute, accesible públicamente a través de la IP de la instancia.
 
-<!-- VIDEO_AQUI -->
+https://github.com/user-attachments/assets/06f5356e-7a8c-450c-bf97-74cf26386130
 
 ---
 
@@ -41,7 +41,7 @@ Falcon-RAG es una base de conocimiento conversacional que:
 
 ### Pipeline RAG
 
-\`\`\`
+```
 Documentos (8 formatos)
     → Extracción de texto (loaders)
     → Chunking con overlap + metadatos (categoría, archivo)
@@ -54,7 +54,7 @@ Pregunta del colaborador
     → Umbral de confianza + filtrado de fuentes
     → Generación con contexto (Llama 3.3)
     → Respuesta con fuentes citadas
-\`\`\`
+```
 
 ---
 
@@ -104,7 +104,7 @@ La interfaz de chat incluye los elementos recomendados para un agente corporativ
 
 ## Instalación local (desarrollo)
 
-\`\`\`bash
+```bash
 # Clonar el repositorio
 git clone https://github.com/TU_USUARIO/falcon-rag.git
 cd falcon-rag
@@ -127,7 +127,7 @@ python -m app.ingest
 
 # Levantar el servidor
 uvicorn app.main:app --host 0.0.0.0 --port 8000
-\`\`\`
+```
 
 ---
 
@@ -135,7 +135,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 El despliegue se realiza sobre una instancia de OCI Compute mediante Docker:
 
-\`\`\`bash
+```bash
 # En la VM de OCI (Ubuntu 24.04, Ampere A1)
 git clone https://github.com/TU_USUARIO/falcon-rag.git
 cd falcon-rag
@@ -153,7 +153,7 @@ docker run -d \\
   --env-file .env \\
   -v ~/falcon-rag/wallet:/app/wallet \\
   falcon-rag
-\`\`\`
+```
 
 La autenticación ante OCI Generative AI se resuelve automáticamente mediante Instance Principals (sin llaves API en el servidor), gracias a un Dynamic Group y una Policy de IAM que autorizan a la instancia a usar el servicio.
 
@@ -170,7 +170,7 @@ La autenticación ante OCI Generative AI se resuelve automáticamente mediante I
 
 ## Estructura del proyecto
 
-\`\`\`
+```
 falcon-rag/
 ├── app/
 │   ├── main.py            # FastAPI: API + interfaz de chat
@@ -190,7 +190,7 @@ falcon-rag/
 ├── .env.example           # Plantilla de variables de entorno
 ├── requirements.txt
 └── README.md
-\`\`\`
+```
 
 ---
 
