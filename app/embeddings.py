@@ -6,11 +6,9 @@ from app.config import (
     GENAI_ENDPOINT, EMBEDDING_MODEL,
 )
 
-_config = oci.config.from_file(OCI_CONFIG_FILE, OCI_CONFIG_PROFILE)
-_client = oci.generative_ai_inference.GenerativeAiInferenceClient(
-    config=_config,
-    service_endpoint=GENAI_ENDPOINT,
-)
+from app.oci_client import get_genai_client
+
+_client = get_genai_client()
 
 
 def embed_texts(textos: list[str], input_type: str = "SEARCH_DOCUMENT") -> list[list[float]]:

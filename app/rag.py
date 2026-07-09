@@ -8,11 +8,9 @@ from app.config import (
 from app.embeddings import embed_query
 from app.vectorstore import buscar_similares
 
-_config = oci.config.from_file(OCI_CONFIG_FILE, OCI_CONFIG_PROFILE)
-_client = oci.generative_ai_inference.GenerativeAiInferenceClient(
-    config=_config,
-    service_endpoint=GENAI_ENDPOINT,
-)
+from app.oci_client import get_genai_client
+
+_client = get_genai_client()
 
 # Umbral: si el mejor resultado supera esta distancia, no hay info suficiente
 UMBRAL_DISTANCIA = 0.70
